@@ -1,0 +1,1 @@
+{:faker-api/app {}, :server/jetty {:handler #ig/ref :faker-api/app, :port 3000}}

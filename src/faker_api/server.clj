@@ -1,16 +1,33 @@
 (ns faker-api.server
-  (:require [reitit.ring :as ring]
+  (:require [integrant.core :as ig]
+            [reitit.ring :as ring]
             [ring.adapter.jetty :as jetty])
   (:gen-class))
 
-(def app
+(defn app
+  [env]
   (ring/ring-handler
     (ring/router
       [["/" {:get {:handler (fn [req] {:status 200, :body "Hello World"})}}]])))
 
-(defn start
-  []
-  (jetty/run-jetty app {:port 3000, :join? false})
-  (println "\nServer running on port 3000"))
+(defmethod ig/init-key :faker-api/app
+  [_ config]
+  (println "\nStarted app")
+  (app config))
 
-(defn -main "I don't do a whole lot ... yet." [& args] (println "main"))
+(defmethod ig/init-key :server/jetty
+  [_ {:keys [handler port]}]
+  (println "\nServer running on port " port)
+  (jetty/run-jetty handler {:port port, :join? false}))
+
+(defmethod ig/halt-key! :server/jetty [_ jetty] (.stop jetty))
+
+(defn -main
+  "I don't do a whole lot ... yet."
+  [config-file]
+  (let [config (-> config-file
+                   slurp
+                   ig/read-string)]
+    (-> config
+        ig/prep
+        ig/init)))
