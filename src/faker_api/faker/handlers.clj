@@ -10,3 +10,9 @@
 (defn name
   []
   (fn [request] (let [name (data/fake-name)] (rr/response {:name name}))))
+
+(defn phone-number
+  []
+  (fn [request]
+    (let [phone-number (data/fake-phone-number)]
+      (rr/response {:phone-number phone-number}))))

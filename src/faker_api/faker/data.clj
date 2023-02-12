@@ -12,3 +12,9 @@
   (-> (Faker.)
       (.name)
       (.fullName)))
+
+(defn fake-phone-number
+  []
+  (-> (Faker.)
+      (.phoneNumber)
+      (.cellPhone)))

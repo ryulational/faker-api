@@ -11,4 +11,8 @@
    ["/name"
     {:get {:handler (faker/name),
            :responses {200 {:body {:name string?}}},
-           :summary "Generate fake name"}}]])
+           :summary "Generate fake name"}}]
+   ["/phone"
+    {:get {:handler (faker/phone-number),
+           :responses {200 {:body {:phone-number string?}}},
+           :summary "Generate fake phone number"}}]])
