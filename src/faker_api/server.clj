@@ -1,14 +1,11 @@
 (ns faker-api.server
   (:require [integrant.core :as ig]
             [reitit.ring :as ring]
-            [ring.adapter.jetty :as jetty])
+            [ring.adapter.jetty :as jetty]
+            [faker-api.router :as router])
   (:gen-class))
 
-(defn app
-  [env]
-  (ring/ring-handler
-    (ring/router
-      [["/" {:get {:handler (fn [req] {:status 200, :body "Hello World"})}}]])))
+(defn app [env] (router/routes env))
 
 (defmethod ig/init-key :faker-api/app
   [_ config]
