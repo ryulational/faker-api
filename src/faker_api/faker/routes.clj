@@ -3,7 +3,12 @@
 
 (defn routes
   [env]
-  ["/address"
-   {:get {:handler (faker/address),
-          :responses {200 {:body {:address string?}}},
-          :summary "Generate fake address"}}])
+  [""
+   ["/address"
+    {:get {:handler (faker/address),
+           :responses {200 {:body {:address string?}}},
+           :summary "Generate fake address"}}]
+   ["/name"
+    {:get {:handler (faker/name),
+           :responses {200 {:body {:name string?}}},
+           :summary "Generate fake name"}}]])

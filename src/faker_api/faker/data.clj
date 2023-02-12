@@ -7,3 +7,8 @@
       (.address)
       (.streetAddress)))
 
+(defn fake-name
+  []
+  (-> (Faker.)
+      (.name)
+      (.fullName)))
