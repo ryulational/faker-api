@@ -1,5 +1,9 @@
-(ns faker-api.faker.routes)
+(ns faker-api.faker.routes
+  (:require [faker-api.faker.handlers :as faker]))
 
 (defn routes
   [env]
-  ["/faker" {:get {:handler (fn [req] {:status 200, :body "Hello World"})}}])
+  ["/address"
+   {:get {:handler (faker/address),
+          :responses {200 {:body {:address string?}}},
+          :summary "Generate fake address"}}])
