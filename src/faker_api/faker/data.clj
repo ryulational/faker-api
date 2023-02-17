@@ -7,6 +7,12 @@
       (.address)
       (.streetAddress)))
 
+(defn fake-book
+  []
+  (-> (Faker.)
+      (.book)
+      (.title)))
+
 (defn fake-name
   []
   (-> (Faker.)

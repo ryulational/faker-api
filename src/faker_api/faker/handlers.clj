@@ -7,6 +7,10 @@
   (fn [request]
     (let [address (data/fake-address)] (rr/response {:address address}))))
 
+(defn book
+  []
+  (fn [request] (let [book (data/fake-book)] (rr/response {:book book}))))
+
 (defn name
   []
   (fn [request] (let [name (data/fake-name)] (rr/response {:name name}))))

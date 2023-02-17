@@ -8,6 +8,10 @@
     {:get {:handler (faker/address),
            :responses {200 {:body {:address string?}}},
            :summary "Generate fake address"}}]
+   ["/book"
+    {:get {:handler (faker/book),
+           :responses {200 {:body {:book string?}}},
+           :summary "Generate fake book"}}]
    ["/name"
     {:get {:handler (faker/name),
            :responses {200 {:body {:name string?}}},
