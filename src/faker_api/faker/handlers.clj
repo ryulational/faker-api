@@ -5,16 +5,20 @@
 (defn address
   []
   (fn [request]
-    (let [address (data/fake-address)] (rr/response {:address address}))))
+    (let [fake-address (data/fake-address)]
+      (rr/response {:address fake-address}))))
 
-(defn book [] (fn [request] (let [book (data/fake-book)] (rr/response book))))
+(defn book
+  []
+  (fn [request] (let [fake-book (data/fake-book)] (rr/response fake-book))))
 
 (defn name
   []
-  (fn [request] (let [name (data/fake-name)] (rr/response {:name name}))))
+  (fn [request]
+    (let [fake-name (data/fake-name)] (rr/response {:name fake-name}))))
 
 (defn phone-number
   []
   (fn [request]
-    (let [phone-number (data/fake-phone-number)]
-      (rr/response {:phone-number phone-number}))))
+    (let [fake-phone-number (data/fake-phone-number)]
+      (rr/response {:phone-number fake-phone-number}))))
