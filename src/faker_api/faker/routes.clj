@@ -10,7 +10,10 @@
            :summary "Generate fake address"}}]
    ["/book"
     {:get {:handler (faker/book),
-           :responses {200 {:body {:book string?}}},
+           :responses {200 {:body {:author string?,
+                                   :genre string?,
+                                   :publisher string?,
+                                   :title string?}}},
            :summary "Generate fake book"}}]
    ["/name"
     {:get {:handler (faker/name),

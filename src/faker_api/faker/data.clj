@@ -9,9 +9,12 @@
 
 (defn fake-book
   []
-  (-> (Faker.)
-      (.book)
-      (.title)))
+  (let [book (-> (Faker.)
+                 (.book))]
+    {:author (.author book),
+     :genre (.genre book),
+     :publisher (.publisher book),
+     :title (.title book)}))
 
 (defn fake-name
   []
